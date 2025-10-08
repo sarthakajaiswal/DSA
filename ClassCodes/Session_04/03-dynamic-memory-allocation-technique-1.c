@@ -1,5 +1,7 @@
 /*
-
+    @GOAL:      To study dynamic memory allocation using example 
+    @DATE:      08 OCT 2025 
+    @AUTHOR:    Sarthak A. Jaiswal 
 */
 
 #include <stdio.h> // for declaration of printf() 
