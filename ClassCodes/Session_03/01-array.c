@@ -7,13 +7,15 @@
 
 #include <stdio.h> 
 
-void display(int arr[], int size); 
-
 int main(void) 
 {
+    // function prototypes 
+    void display(int arr[], int size); 
+
     // variable declarations 
     int a[8] = {-15, -5, -8, 20, 10, 50, 40, 80}; 
 
+    // code 
     printf("ARRAY BEFORE SHIFTING POSITIVE NUMBERS TO THE RIGHT:\n"); 
     display(a, 8); 
 

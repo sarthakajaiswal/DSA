@@ -6,15 +6,17 @@
 
 #include <stdio.h> // for declaration of printf() function 
 
-// declaration of display 
-void display(int arr[], int size); 
-
 int main(void) 
 {
+    // function declarations 
+    void display(int arr[], int size); 
+
+    // variable declarations 
     int a[5] = {10, 20, 30, 40, 50}; 
     int b[3] = {1000, 2000, 3000}; 
     int c[8] = {100, 200, 300, 400, 500, 600, 700, 800}; 
 
+    // code 
     printf("Printing array a:\n"); 
     display(a, 5); // call of display() 
 
@@ -30,8 +32,10 @@ int main(void)
 // definition of display() 
 void display(int arr[], int size) 
 {
+    // variable declarations 
     int i; 
 
+    // code 
     i = 0; 
     while(i < size) 
     {

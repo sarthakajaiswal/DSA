@@ -13,16 +13,19 @@
     @AUTHOR Sarthak A. Jaiswal 
 */
 
-#include <stdio.h> 
-
-void display(int arr[], int size); 
-void right_shift_and_rotate(int arr[], int size); 
+#include <stdio.h>  
 
 int main(void) 
 {
+    // function declarations 
+    void display(int arr[], int size); 
+    void right_shift_and_rotate(int arr[], int size);
+
+    // variables  
     int a[8] = {-10, -5, -8, -3, 30, 40, 20, 10}; 
     int b[8] = {30, 10, 2, 25, 30, 16, 28, 40}; 
 
+    // code 
     printf("Showing array \'a\' BEFORE right shift and rotate: \n"); 
     display(a, 8); 
     right_shift_and_rotate(a, 8); 
