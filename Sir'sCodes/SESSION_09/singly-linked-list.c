@@ -11,14 +11,14 @@
 #define LIST_DATA_NOT_FOUND 1 
 #define LIST_EMPTY          2 
 
-/* Node layout definition */
+/*  Node layout definition  */
 struct node 
 {
     int data; 
     struct node* next; 
-};  
+}; 
 
-/* Interface function declarations */
+/* Interface functions declarations */
 /* List creation function */
 struct node* create_list(void); 
 
@@ -32,7 +32,7 @@ int insert_before(struct node* p_list, int existing_data, int new_data);
 int get_start(struct node* p_list, int* p_start_data); 
 int get_end(struct node* p_list, int* p_end_data); 
 
-/* Pop functions */
+/* Pop Functions */
 int pop_start(struct node* p_list, int* p_start_data); 
 int pop_end(struct node* p_list, int* p_end_data); 
 
@@ -47,15 +47,15 @@ int get_list_length(struct node* p_list);
 int is_list_empty(struct node* p_list); 
 void show_list(struct node* p_list, const char* msg); 
 
-/* List destruction functions */
+/* List destruction function */
 int destroy_list(struct node* p_list); 
 
 /* Client of linked list */
-int main(void) 
+int main(void)
 {
     struct node* p_list = NULL; 
-
+    
     return (0); 
-} 
+}
 
 /* Server of linked list */
