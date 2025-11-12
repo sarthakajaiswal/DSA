@@ -54,5 +54,9 @@ dkms.conf
 # debug information files
 *.dwo
 
-#executables 
+# executables 
 app 
+
+# IDE files 
+.vscode/
+
