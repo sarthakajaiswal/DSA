@@ -4,6 +4,11 @@
     @AUTHOR:    Sarthak A. Jaiswal 
 */
 
+/*
+    intel i3 11th Gen | Ubuntu 24.04.3 LTS 
+    array size = 1M time required = 1076 s 
+*/
+
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
