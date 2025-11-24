@@ -1,3 +1,9 @@
+/*
+    @GOAL:      To implement singly linked list 
+    @DATE:      25 OCT 2025
+    @AUTHOR:    Sarthak A Jaiswal 
+*/
+
 /* header files */
 #include <stdio.h> 
 #include <stdlib.h> 
