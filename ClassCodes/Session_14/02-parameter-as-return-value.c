@@ -1,3 +1,9 @@
+/* 
+    @GOAL: To study parameterised return value concept 
+    @DATE: 08 NOV 2025
+    @AUTHOR: Sarthak A. Jaiswal 
+*/
+
 #include <stdio.h> 
 
 #define SUCCESS  1 
