@@ -1,3 +1,9 @@
+/* 
+    @GOAL: To write list header file in CPP 
+    @DATE: 11 Oct 2025 
+    @AUTHOR: Sarthak A. Jaiswal 
+*/
+
 #ifndef _LIST_HPP 
 #define _LIST_HPP 
 
