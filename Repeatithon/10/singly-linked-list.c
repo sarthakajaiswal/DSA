@@ -1,3 +1,8 @@
+/*
+    @Goal: Singly Linked List repeatithon 
+    @Author: Sarthak A. Jaiswal 
+*/
+
 /* Header files */
 #include <stdio.h> 
 #include <stdlib.h> 
@@ -1141,7 +1146,8 @@ int main(void)
 
     status = get_start(p_list, &start_data); 
     assert(status == SUCCESS); 
-    printf("Data at start  = %d\n", start_data); data data data data data data data data data  
+    printf("Data at start  = %d\n", start_data); 
+    // data data data data data data data data data  
     show_list(p_list, "Showing list to demonstrate get_start() return start data without removing it:"); 
     puts(line); 
 
@@ -1488,14 +1494,772 @@ int main(void)
     return (0); 
 } 
 
+/* Server of linked list */
+/* List creation functions */
+struct node* create_list(void) 
+{
+    struct node* head_node = NULL; 
 
+    head_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == head_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
 
+    head_node->data = 0; 
+    head_node->next = NULL; 
 
+    return (head_node); 
+} 
 
+struct node* create_list(void) 
+{
+    struct node* head_node = NULL; 
 
+    head_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == head_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
 
+    head_node->data = 0; 
+    head_node->next = NULL; 
 
+    return (head_node); 
+} 
 
+struct node* create_list(void)
+{
+    struct node* head_node = NULL; 
 
+    head_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == head_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
 
+    head_node->data = 0; 
+    head_node->next = NULL; 
 
+    return (head_node); 
+} 
+
+struct node* create_list(void) 
+{
+    struct node* head_node = NULL; 
+
+    head_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == head_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    head_node->data = 0; 
+    head_node->next = NULL; 
+
+    return (head_node); 
+} 
+
+struct node* create_list(void) 
+{
+    struct node* head_node = NULL; 
+
+    head_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == head_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    head_node->data = 0; 
+    head_node->next = NULL; 
+
+    return (head_node); 
+} 
+
+/* Data addition functions */
+int insert_start(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Error in allocating memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = p_list->next; 
+    p_list->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_start(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+    new_node->next = p_list->next; 
+    p_list->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_start(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(new_node == NULL) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = p_list->next; 
+    p_list->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_start(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data;
+    new_node->next = p_list->next; 
+    p_list->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_start(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = p_list->next; 
+    p_list->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_end(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    } 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(new_node == NULL) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = NULL; 
+    run->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_end(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    } 
+
+    run->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_end(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    } 
+
+    run->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_end(struct node* p_list, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    } 
+
+    run->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_end(struct node* p_list, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* new_node = NULL; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+    new_node->next = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    }
+    
+    run->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_after(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* existing_node = NULL; 
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run = run->next; 
+    } 
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    existing_node = run; 
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->next = new_data; 
+
+    new_node->next = existing_node->next; 
+    existing_node->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_after(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* existing_node = NULL; 
+    struct node* new_node = NULL; 
+    struct node* run = NULL; 
+
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run = run->next; 
+    } 
+
+    existing_node = run; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = existing_node->next; 
+    existing_node->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_after(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* existing_node = NULL; 
+    struct node* run = NULL; 
+
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run = run->next; 
+    } 
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    existing_node = run; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = existing_node->next; 
+    existing_node->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_after(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* new_node = NULL; 
+    struct node* existing_node = NULL; 
+    struct node* run = NULL; 
+
+    run - p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+        run = run->next; 
+    } 
+
+    if(run == NULL) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    existing_node = run; 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = existing_node->next; 
+    existing_node->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_after(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* existing_node = NULL; 
+    struct node* run = NULL; 
+    struct node* new_node = NULL; 
+
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run = run->next; 
+    }
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = existing_node->next; 
+    existing_node->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_before(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* run_previous = NULL; 
+    struct node* new_node = NULL; 
+
+    run_previous = p_list; 
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run_previous = run; 
+        run = run->next; 
+    } 
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("out of memory"); 
+        exit(EXIT_FAILURE); 
+    }
+    new_node->data = new_data; 
+
+    new_node->next = run; 
+    run_previous->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_before(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* run_previous = NULL; 
+    struct node* new_node = NULL; 
+
+    run = p_list->next; 
+    run_previous = p_list; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run_previous = run; 
+        run = run->next; 
+    } 
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+    
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = run; 
+    run_previous->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_before(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* run_previous = NULL; 
+    struct node* new_node = NULL; 
+
+    run = p_list->next; 
+    run_previous = p_list; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run_previous = run; 
+        run = run->next; 
+    } 
+
+    if(NULL == new_node) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(new_node == NULL) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = run; 
+    run_previous->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_before(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* run_previous = NULL; 
+    struct node* new_node = NULL; 
+
+    run = p_list->next; 
+    run_previous = p_list; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run_previous = run; 
+        run = run->next; 
+    }
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node) 
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+    new_node->data = new_data; 
+
+    new_node->next = run; 
+    run_previous->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+int insert_before(struct node* p_list, int existing_data, int new_data) 
+{
+    struct node* run = NULL; 
+    struct node* run_previous = NULL; 
+    struct node* new_node = NULL; 
+
+    run = p_list->next; 
+    run_previous = p_list; 
+    while(run != NULL) 
+    {
+        if(run->data == existing_data) 
+            break; 
+
+        run_previous = run; 
+        run = run->next; 
+    } 
+
+    if(NULL == run) 
+        return (LIST_DATA_NOT_FOUND); 
+
+    new_node = (struct node*)malloc(sizeof(struct node)); 
+    if(NULL == new_node)
+    {
+        printf("Out of memory"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    new_node->data = new_data; 
+
+    new_node->next = run; 
+    run_previous->next = new_node; 
+
+    return (SUCCESS); 
+} 
+
+/* Get functions */
+int get_start(struct node* p_list, int* p_start_data) 
+{
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    *p_start_data = p_list->next->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_start(struct node* p_list, int* p_start_data) 
+{
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    *p_start_data = p_list->next->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_start(struct node* p_list, int* p_start_data) 
+{
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    *p_start_data = p_list->next->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_start(struct node* p_list, int* p_start_data) 
+{
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    *p_start_data = p_list->next->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_start(struct node* p_list, int* p_start_data) 
+{
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    *p_start_data = p_list->next->data; 
+    return (SUCCESS); 
+} 
+
+int get_end(struct node* p_list, int* p_end_data) 
+{
+    struct node* run = NULL; 
+
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+    
+    run = p_list->next; 
+    while(run->next != NULL) 
+        run = run->next; 
+
+    *p_end_data = run->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_end(struct node* p_list, int* p_end_data) 
+{
+    struct node* run = NULL; 
+
+    if(p_list->next == NULL) 
+        return (LIST_EMPTY); 
+
+    run = p_list->next; 
+    while(run->next != NULL) 
+    {
+        run = run->next; 
+    } 
+
+    *p_end_data = run->data; 
+
+    return (SUCCESS); 
+} 
+
+int get_end(struct node* p_list, int* p_end_data) 
+{
+    struct node* run = NULL; 
+
+    if(NULL == p_list->next)
+        return (LIST_EMPTY); 
+
+    run = p_list->next; 
+    while(run->next != NULL) 
+        run = run->next; 
+
+    *p_end_data = run->data; 
+    return (SUCCESS); 
+} 
+
+int get_end(struct node* p_list, int* p_end_data) 
+{
+    struct node* run = NULL; 
+
+    if(NULL == p_list->next) 
+        return (LIST_EMPTY); 
+
+    run = p_list->next; 
+    while(run->next != NULL) 
+        run = run->next; 
+
+    *p_end_data = run->data; 
+
+    return (LIST_EMPTY); 
+} 
+
+int get_end(struct node* p_list, int* p_end_data) 
+{
+    struct node* run = NULL; 
+
+    if(NULL == p_list->next) 
+        return (LIST_EMPTY); 
+
+    run = p_list->next; 
+    while(run->next != NULL) 
+        run = run->next; 
+
+    *p_end_data = run->data; 
+    return (SUCCESS); 
+} 
