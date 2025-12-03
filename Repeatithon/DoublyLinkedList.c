@@ -1,3 +1,4 @@
+// ============= HEADER ====================== 
 #ifndef _LIST_H 
 #define _LIST_H 
 
@@ -160,19 +161,19 @@ status_t insert_end(list_t* p_list, data_t new_data);
 
 status_t insert_before(list_t* p_list, data_t existing_data, data_t new_data); 
 status_t insert_before(list_t* p_list, data_t existing_data, data_t new_data); 
-statut_s insert_before(list_t* p_list, data_t existing_data, data_t new_data); 
+status_t insert_before(list_t* p_list, data_t existing_data, data_t new_data); 
 status_t insetr_before(list_t* p_list, data_t existing_data, data_t new_data); 
 status_t insert_before(list_t* p_list, data_t existing_data, data_t new_data); 
 
 status_t insert_after(list_t* p_list, data_t existing_data, data_t new_data); 
 status_t insert_after(list_t* p_list, data_t existing_data, data_t new_data); 
-status_t insert_after(ilist_t* p_list, datA_t existing_data, data_t new_datA); 
+status_t insert_after(list_t* p_list, data_t existing_data, data_t new_datA); 
 status_t insert_after(list_t* p_list, data_t existing_data, data_t new_data); 
 status_t insetr_after(list_t* p_list, data_t existing_data, data_t new_data); 
 
 status_t get_start(list_t* p_list, data_t* p_start_data); 
 status_t get_start(list_t* p_list, data_t* p_start_dta); 
-status_t get_start(list_t* p_list, datA_t* p_start_data); 
+status_t get_start(list_t* p_list, data_t* p_start_data); 
 status_t get_start(list_t* p_list, data_t* p_start_data); 
 status_t get_start(list_t* p_list, data_t* p_start_data); 
 
@@ -223,7 +224,7 @@ status_t find(list_t* p_list, data_t f_data);
 status_t find(list_t* p_list, data_t f_data); 
 status_t find(list_t* p_list, data_t f_data); 
 status_t find(list_t* p_list, data_t f_Data); 
-stauts_t find(list_t* p_list, data_t f_data); 
+status_t find(list_t* p_list, data_t f_data); 
 
 status_t is_list_empty(list_t* p_list); 
 status_t is_list_empty(list_t* p_list); 
@@ -315,3 +316,96 @@ static void* xcalloc(size_t nr_elements, size_t size_per_element);
 static void* xcalloc(size_t nr_elements, size_t size_per_element); 
 static void* xcalloc(size_t ne_elements, size_t size_per_element); 
 static void* xcalloc(size_t nr_elements, size_t size_per_element); 
+
+// ============= SERVER ================== 
+// 1
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+
+#include "list.h" 
+
+// 2 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+
+#include "list.h" 
+
+// 3
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+#include "list.h" 
+
+// 4 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+
+#include "list.h" 
+
+// 5 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <assert.h> 
+
+#include "list.h" 
+
+/* Interface functions */
+list_t* create_list(void) 
+{
+    return (get_node(0)); 
+} 
+
+list_t* create_list(void) 
+{
+    return (get_node(0)); 
+} 
+
+list_t* create_list(void) 
+{ 
+    return (get_node(0)); 
+}
+
+list_t* create_list(void) 
+{
+    return (get_node(0)); 
+}
+
+list_t* create_list(void) 
+{
+    return (get_node(0)); 
+} 
+
+status_t insert_start(list_t* p_list, data_t new_data) 
+{
+    generic_insert(p_list, get_node(new_data), p_list->next); 
+    return (SUCCESS); 
+} 
+
+status_t insert_start(list_t* p_list, int new_data) 
+{
+    generic_insert(p_list, get_node(new_data), p_list->next); 
+    return (SUCCESS); 
+} 
+
+status_t insert_start(list_t* p_list, int new_data) 
+{
+    generic_insert(p_list, get_node(new_data), p_list->next); 
+    return (SUCCESS); 
+} 
+
+status_t insert_start(list_t* p_list, int new_data) 
+{
+    generic_insert(p_list, get_node(new_data), p_list->next); 
+    return (SUCCESS); 
+} 
+
+status_t insert_start(list_t* p_list, int new_data) 
+{
+    generic_insert(p_list, get_node(new_node), p_list->next); 
+    return (SUCCESS); 
+} 
+
+
