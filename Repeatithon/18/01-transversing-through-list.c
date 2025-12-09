@@ -328,3 +328,305 @@ void show_list(struct node* p_list)
         run = run->next; 
     } 
 } 
+
+// =================================== 
+typedef struct node node_t; 
+typedef node_t list_t; 
+
+// 1 
+void get_last_node(struct node* p_list)
+{
+    struct node* run = NULL; 
+
+    run = p_list; 
+    while(run->next != NULL) 
+        run = run->next; 
+
+    // run is the last node 
+} 
+
+// 2 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_node = NULL; 
+
+    p_node = p_list; 
+    while(p_node->next != NULL) 
+        p_node = p_node->next; 
+
+    // p_node is the last node 
+} 
+
+// 3 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 4 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 5
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+}  
+
+// 6
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 7
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+    {
+        p_run = p_run->next; 
+    } 
+
+    // p_run is the last node 
+} 
+
+// 8
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 9 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 10 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 11 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 12 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+}
+
+// 13 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 14 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 15 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 16 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 17 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 18 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 19 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_run; 
+    while(p_run->next != NULL)
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 20 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 21 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 22 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
+
+// 23 
+void get_last_node(list_t* p_list) 
+{
+    node_t* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL)
+        p_run = p_run->next; 
+} 
+
+// 24 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+} 
+
+// 25 
+void get_last_node(list_t* p_list) 
+{
+    struct node* p_run = NULL; 
+
+    p_run = p_list; 
+    while(p_run->next != NULL) 
+        p_run = p_run->next; 
+
+    // p_run is the last node 
+} 
