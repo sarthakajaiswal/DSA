@@ -86,6 +86,8 @@ int main(void)
     assert(find_in_list(p_list, 100) == TRUE); 
 
     show_list(p_list, "p_list before imutable reversal: get_reversed_list():"); 
+    reverse_list(p_list); 
+    show_list(p_list, "After reversal: "); 
 
     destroy_list(&p_list); 
 

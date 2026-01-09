@@ -176,7 +176,7 @@ status_t find_in_list(list_t* p_list, data_t f_data)
 len_t get_list_length(list_t* p_list) 
 {
     node_t* p_run = NULL; 
-    len_t len; 
+    len_t len = 0; 
 
     p_run = p_list->next; 
     while(p_run != NULL) 
@@ -218,20 +218,48 @@ status_t destroy_list(list_t** pp_list)
 }
 
 /* Interlist routines */
-list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
-{} 
+// list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+// {} 
 
-status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
-{} 
+// status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
+// {} 
 
-list_t* get_reversed_list(list_t* p_list) 
-{} 
+// list_t* get_reversed_list(list_t* p_list) 
+// {} 
 
 status_t reverse_list(list_t* p_list) 
-{} 
+{
+    // node_t* p_original_start = NULL; 
+    // node_t* p_run = NULL; 
+    // node_t* p_run_next = NULL; 
 
-list_t* merge_lists(list_t* p_list_1, list_t* p_list_2) 
-{} 
+    // // code 
+    // if(p_list->next == NULL && p_list->next->next == NULL) 
+    //     return (SUCCESS); 
+
+    // p_original_start = p_list->next; 
+    // p_run = p_list->next->next; 
+    // p_run_next = p_run->next; 
+    // while(p_run != p_list) 
+    // {
+    //     if(p_run->prev != NULL) 
+    //         p_run->prev->next = p_run->next; 
+    //     p_run->next->prev = p_run->prev; 
+
+    //     generic_insert(p_list, p_run, p_list->next); 
+
+    //     p_run = p_run_next; 
+    //     p_run_next = p_run->next; 
+    // } 
+
+    // p_original_start->next = p_list; 
+    // p_list->prev = p_original_start;  
+
+    // return (SUCCESS); 
+} 
+
+// list_t* merge_lists(list_t* p_list_1, list_t* p_list_2) 
+// {} 
 
 /* List auxilliary functions */
 static void generic_insert(node_t* p_beg, node_t* p_mid, node_t* p_end) 
