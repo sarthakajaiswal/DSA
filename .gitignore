@@ -1,8 +1,5 @@
 #ignore the Notes PDF folder 
-/Sir'sCodes
-/PDFs 
-/path-for-reading-books.txt 
-
+/NonShareable
 
 # Prerequisites
 *.d
