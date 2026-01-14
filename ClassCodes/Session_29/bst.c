@@ -1,3 +1,9 @@
+/*
+    @GOAL:      BST implementation 
+    @DATE:      14 Jan 2026 
+    @AUTHOR:    Sarthak A Jaiswal 
+*/ 
+
 // ==================== HEADER FILES START ==================================== 
 #include <stdio.h> 
 #include <stdlib.h> 

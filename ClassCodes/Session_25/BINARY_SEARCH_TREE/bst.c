@@ -1,3 +1,9 @@
+/*
+    @GOAL:      basic implementation of BST
+    @DATE:      14 Dec 2025 
+    @AUTHOR:    Sarthak A Jaiswal 
+*/ 
+
 #include <stdio.h> 
 #include <stdlib.h> 
 

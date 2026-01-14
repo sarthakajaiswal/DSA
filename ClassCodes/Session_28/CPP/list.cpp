@@ -1,3 +1,9 @@
+/*
+    @GOAL:      header file for AVL tree using templates in CPP  
+    @DATE:      08 Jan 2026 
+    @AUTHOR:    Sarthak A Jaiswal 
+*/ 
+
 #ifndef _LIST_HPP 
 #define _LIST_HPP 
 
