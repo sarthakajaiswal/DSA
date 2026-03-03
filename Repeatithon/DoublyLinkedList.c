@@ -926,3 +926,745 @@ status_r remove_all(list_t* p_list, data_t remove_data)
 
     return (SUCCESS); 
 } 
+
+status_t destroy_list(list_t** pp_list) 
+{
+    list_t* p_list = NULL; 
+    node_t* p_run = NULL; 
+    node_t* p_run_next = NULL; 
+
+    p_list = *pp_list; 
+    p_run = p_list->next; 
+    while(p_run != p_list) 
+    {
+        p_run_next = p_run->next; 
+        free(p_run); 
+        p_run = p_run_next; 
+    } 
+ 
+    free(p_list); 
+    p_list = NULL; 
+
+    *pp_list = NULL; 
+    return (SUCCESS); 
+} 
+
+status_t destroy_list(list_t** p_list) 
+{
+    list_t* p_list; 
+    node_t* run = NULL; 
+    node_t* run_next = NULL; 
+
+    p_list = *pp_list; 
+    run = p_list->next; 
+    while(run != p_list) 
+    {
+        run_next = run->next; 
+        free(run); 
+        run = run_next; 
+    } 
+
+    free(p_list); 
+    p_list = NULL; 
+
+    *pp_list = NULL; 
+    return (SUCCESS); 
+} 
+
+status_t destroy_list(list_t** pp_list) 
+{
+    list_t* p_list; 
+    node_t* run = NULL; 
+    node_t* run_next = NULL; 
+
+    p_list = *pp_list; 
+    while(p_list->next != NULL) 
+    {
+        run_next = run->next; 
+        free(run); 
+        run = run_next; 
+    } 
+
+    free(p_list); 
+    p_list = NULL; 
+
+    *pp_list = NULL; 
+    return (SUCCESS); 
+} 
+
+status_t destroy_list(list_t** pp_list) 
+{
+    list_t* p_list = NULL; 
+    node_t* run = NULL; 
+    node_t* run_next = NULL; 
+
+    p_list = *pp_list; 
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        run_next = run_next; 
+        free(run); 
+        run = run_next; 
+    } 
+
+    free(p_list); 
+    p_list = NULL; 
+
+    *pp_list = NULL; 
+    return (SUCCESS); 
+} 
+
+status_t destroy_list(list_t** pp_list) 
+{
+    list_t* p_list = NULL; 
+    list_t* run = NULL; 
+    list_t* run_next = NULL; 
+
+    p_list = *pp_list; 
+
+    run = p_list->next; 
+    while(run != NULL) 
+    {
+        run_next = run->next; 
+        free(run); 
+        run = run->next; 
+    } 
+
+    free(p_list); 
+    p_list = NULL; 
+
+    *pp_list = NULL; 
+
+    return (SUCCESS); 
+} 
+
+list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_concat_list = NULL; 
+    node_t* p_run = NULL; 
+
+    p_concat_list = create_list(); 
+    run = p_list_1->next; 
+    while(run != p_list_1) 
+    {
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    for(run = p_list2->next; run = run->next; run != p_list2) 
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+
+    return (p_concat_list); 
+} 
+
+list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_concat_list = NULL; 
+    node_t* run = NULL; 
+
+    p_concat_list = create_list(); 
+
+    run = p_list_1->next; 
+    while(run != p_list_1) 
+    {
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    run = p_list_2->next; 
+    while(run != p_list_2) 
+    {
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    return (p_concat_list); 
+} 
+
+list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_concat_list = NULL; 
+    node_t* run = NULL; 
+
+    p_concat_list = create_list(); 
+    run = p_list_1->next; 
+    while(run != p_list_1) 
+    {
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    run = p_list_2->next; 
+    while(run != p_list_2) 
+    {
+        assert(insert_end(p_concat_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    return (p_concat_list); 
+} 
+
+list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_concated_list = NULL; 
+    node_t* run = NULL; 
+
+    p_concated_list = create_list(); 
+
+    run = p_list_1->next; 
+    while(run != p_list_1) 
+    {
+        assert(insert_end(p_concated_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    run = p_list_2->next; 
+    while(run != p_list_2) 
+    {
+        assert(insert_end(p_concated_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    return (p_concated_list); 
+} 
+
+list_t* get_concated_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_concated_list = NULL; 
+    node_t* run = NULL; 
+
+    p_concated_list = create_list(); 
+
+    run = p_list_1->next; 
+    while(run != p_list_1) 
+    {
+        assert(insert_end(p_concated_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+    run = p_list_2->next; 
+    while(run != p_list_2) 
+    {
+        assert(insert_end(p_concated_list, run->data) == SUCCESS); 
+        run = run->next; 
+    } 
+
+    return (p_concated_list); 
+} 
+
+status_t concat_lists(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+    
+    if(is_list_empty(p_list_2) == TRUE) 
+    {
+        free(p_list_2); 
+        p_list_2 = NULL; 
+        *pp_list_2 = NULL; 
+        return (SUCCESS); 
+    }
+
+    p_list_1->prev->next = p_list2->next; 
+    p_list_2->next->prev = p_list_1->prev; 
+    p_list_2->prev->next = p_list_1; 
+    p_list_1->prev = p_list_2->prev; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+
+    p_list_2 = *pp_list_2; 
+    if(is_list_empty(p_list_2) == TRUE) 
+    {
+        free(p_list_2); 
+        p_list_2 = NULL; 
+        *pp_list_2 = NULL; 
+
+        return (SUCCESS); 
+    } 
+
+    p_list_1->prev->next = p_list_2->next; 
+    p_list_2->next->prev = p_list_1->prev; 
+    p_list_2->prev->next = p_list_1; 
+    p_list_1->prev = p_list_2->prev;  
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+
+    p_list_2 = *pp_list_2; 
+    if(is_list_empty(p_list_2) == TRUE) 
+    {
+        free(p_list_2); 
+        p_list_2 = NULL; 
+        *pp_list_2 = NULL; 
+
+        return (SUCCESS); 
+    } 
+
+    p_list_1->prev->next = p_list_2->next; 
+    p_list_2->next->prev = p_list_1->prev; 
+    p_list_2->prev->next = p_list_1; 
+    p_list_1->prev = p_list_2->prev; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+
+    p_list_2 = *pp_list_2; 
+    if(is_list_empty(p_list_2) == TRUE) 
+    {
+        free(p_list_2); 
+        p_list_2 = NULL; 
+        *pp_list_2 = NULL; 
+
+        return (SUCCESS); 
+    } 
+
+    p_list_1->prev->next = p_list_1->next; 
+    p_list_2->next->prev = p_list_1->prev->next; 
+    p_list_2->prev->next = p_list_1; 
+    p_list_1->prev = p_list_2->prev; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t concat_list(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+
+    p_list_2 = *pp_list_2; 
+    if(is_list_empty(p_list_2) == TRUE) 
+    {
+        free(p_list_2); 
+        p_list_2 = NULL; 
+        *pp_list_2 = NULL; 
+        return (SUCCESS); 
+    } 
+
+    p_list_2->prev->next = p_list_1; 
+    p_list_2->next->prev = p_list_1->prev; 
+    p_list_1->prev->next = p_list_2->next; 
+    p_list_1->prev = p_list_2->prev; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
+list_t* merge_lists(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_merged_list = NULL; 
+    node_t* p_run_1; 
+    node_t* p_run_2; 
+
+    p_merged_list = create_list(); 
+    p_run_1 = p_list_1->next; 
+    p_run_2 = p_list_2->next; 
+
+    while(TRUE) 
+    {
+        if(p_run_1 == p_list_1) 
+        {
+            while(p_run_2 != p_list_2) 
+            {
+                assert(insert_end(p_merged_list, p_run_2->data) == SUCCESS); 
+                p_run_2 = p_run_2->next; 
+            } 
+            break; 
+        } 
+        
+        if(p_run_2 == p_list_2) 
+        {
+            while(p_run_1 != p_list_1) 
+            {
+                assert(insert_end(p_merged_list, p_run_1->data) == SUCCESS); 
+                p_run_1 = p_run_1->next; 
+            } 
+            break; 
+        } 
+
+        if(p_run_1->data < p_run_2->data) 
+        {
+            assert(insert_end(p_merged_list, p_run_1->data) == SUCCESS); 
+            p_run_1 = p_run_1->next; 
+        } 
+        else 
+        {
+            assert(insert_end(p_merged_list, p_run_2->data) == SUCCESS); 
+            p_run_2 = p_run_2->next; 
+        } 
+    } 
+
+    return (p_merged_list); 
+} 
+
+list_t* merge_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_merged_list = NULL; 
+    node_t* run1 = NULL; 
+    node_t* run2 = NULL; 
+
+    run1 = p_list_1->next; 
+    run2 = p_list_2->next; 
+    while(TRUE) 
+    {
+        if(run1 == p_list_1) 
+        {
+            while(run2 != p_list_2) 
+            {
+                assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+                run2 = run2->next; 
+            } 
+            break; 
+        } 
+
+        if(run2 == p_list_2) 
+        {
+            while(run1 != p_list_1) 
+            { 
+                assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+                run1 = run1->next; 
+            }
+            break; 
+        } 
+
+        if(run1->data < run2->data) 
+        {
+            assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+            run1 = run1->next; 
+        } 
+        else 
+        {
+            assert(insert_end(p_merged_list, run2->data) == SUCCESS);
+            run2 = run2->next; 
+        } 
+    } 
+
+    return (p_concat_list); 
+} 
+
+list_t* merge_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_merged_list = NULL; 
+    list_t* run1 = NULL; 
+    list_t* run2 = NULL; 
+
+    p_merged_list = create_list(); 
+    run1 = p_list_1->next; 
+    run2 = p_list_2->next; 
+
+    while(TRUE) 
+    {
+        if(run1 == p_list_1) 
+        {
+            while(run2 != p_list_2) 
+            {
+                assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+                run2 = run2->next; 
+            } 
+            break; 
+        } 
+
+        if(run2 == p_list_2) 
+        {
+            while(run1 != p_list_1) 
+            {
+                assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+                run1 = run1->next; 
+            } 
+            break; 
+        } 
+
+        if(run1->data < run2->data) 
+        {
+            assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+            run1 = run1->next; 
+        } 
+        else 
+        {
+            assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+            run2 = run2->next; 
+        } 
+    } 
+
+    return (p_merged_list); 
+} 
+
+list_t* merge_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_merged_list = NULL; 
+    node_t* run1 = NULL; 
+    node_t* run2 = NULL; 
+
+    p_merged_list = create_list(); 
+
+    run1 = p_list_1->next; 
+    run2 = p_list_2->next; 
+    while(TRUE) 
+    {
+        if(run1 == p_list_1) 
+        {
+            while(run2 != p_list_2) 
+            {
+                assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+                run2 = run2->next; 
+            } 
+            break; 
+        } 
+
+        if(run2 == p_list_2) 
+        {
+            while(run1 != p_list_1) 
+            {
+                assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+                run1 = run1->next; 
+            } 
+            break; 
+        } 
+
+        if(run1->data < run2->data) 
+        {
+            assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+            run1 = run1->next; 
+        } 
+        else 
+        {
+            assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+            run2 = run2->next; 
+        } 
+    } 
+
+    return (p_merged_list); 
+} 
+
+list_t* merge_list(list_t* p_list_1, list_t* p_list_2) 
+{
+    list_t* p_merged_list = NULL; 
+    node_t* run1 = NULL; 
+    node_t* run2 = NULL; 
+
+    p_merged_list = create_list(); 
+
+    run1 = p_list_1->next; 
+    run2 = p_list_2->next;
+    while(TRUE) 
+    {
+        if(run1 == p_list_1) 
+        {
+            while(run2 != p_list_2) 
+            {
+                assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+                run2 = run2->next; 
+            } 
+            break; 
+        } 
+        
+        if(run2 == p_list_2) 
+        {
+            while(run1 != p_list_1) 
+            {
+                assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+                run1 = run1->next; 
+            } 
+            break; 
+        } 
+
+        if(run1->data < run2->data) 
+        {
+            assert(insert_end(p_merged_list, run1->data) == SUCCESS); 
+            run1 = run1->next; 
+        } 
+        else 
+        {
+            assert(insert_end(p_merged_list, run2->data) == SUCCESS); 
+            run2 = run2->next; 
+        } 
+    } 
+
+    return (p_merged_list); 
+} 
+
+list_t* get_reversed_list(list_t* p_list) 
+{
+    list_t* p_reversed_list = NULL; 
+    node_t* p_run = NULL; 
+
+    p_reversed_list = create_list(); 
+    p_run = p_list->next; 
+    while(p_run != p_list) 
+    {
+        assert(insert_start(p_reversed_list, p_run->data) == SUCCESS); 
+        p_run = p_run->next; 
+    } 
+
+    return (p_reversed_list); 
+} 
+
+list_t* get_reversed_list(list_t* p_list) 
+{
+    list_t* p_reversed_list = NULL; 
+    node_t* run = NULL; 
+
+    p_reversed_list = create_list(); 
+    run = p_list->next; 
+    while(p_run != p_list_1) 
+    {
+        assert(insert_start(p_reversed_list, p_run->data) == SUCCESS); 
+        p_run = p_run->next; 
+    } 
+
+    return (p_reversed_list); 
+} 
+
+list_t* get_reversed_list(list_t* p_list) 
+{
+    list_t* p_reversed_list = NULL; 
+    node_t* p_run = NULL; 
+
+    p_reversed_list = create_list(); 
+    p_run = p_list->next; 
+    while(p_run != p_list) 
+    {
+        assert(insert_start(p_reversed_list, p_run->data) == SUCCESS); 
+        p_run = p_run->next; 
+    } 
+
+    return (p_reversed_list); 
+} 
+
+list_t* get_reversed_list(list_t* p_list) 
+{
+    list_t* p_reversed_list = NULL; 
+    node_t* p_run = NULL; 
+
+    p_reversed_list = create_list(); 
+    p_run = p_list->next; 
+    while(run != NULL) 
+    {
+        assert(insert_start(p_reversed_list, p_run->data) == SUCCESS); 
+        p_run = p_run->next; 
+    } 
+
+    return (p_reversed_list); 
+} 
+
+list_t* get_reversed_list(list_t* p_list) 
+{
+    list_t* p_reversed_list = NULL; 
+    node_t* run = NULL; 
+
+    p_reversed_list = create_list(); 
+    p_run = p_list->next; 
+    while(run != NULL) 
+    {
+        assert(insert_start(p_reversed_list, p_run->data) == SUCCESS); 
+        p_run = p_run->next; 
+    } 
+
+    return (p_reversed_list); 
+} 
+
+status_t reverse_list(list_t* p_list) 
+{
+
+} 
+
+status_t reverse_list(list_t* p_list) 
+{
+
+} 
+
+status_t reverse_list(list_t* p_List) 
+{
+
+} 
+
+status_t reverse_list(list_t* p_list) 
+{
+
+} 
+
+status_t reverse_list(list_t* p_list) 
+{
+
+} 
+
+// dll 
+void concat_lists(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+    node_t* p_last_node = NULL; 
+
+    p_list_2 = *pp_list_2; 
+
+    p_last_node = get_last_node(p_list_1); 
+    p_last_node->next = p_list_2->next; 
+    if(is_list_empty(p_list_2) == FALSE) 
+        p_list_2->next->prev = p_last_node; 
+
+    free(p_list_2); 
+    *pp_list_2 = NULL; 
+    return (SUCCESS); 
+} 
+
+void concat_lists(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+    node_t* p_last_node = NULL; 
+
+    p_last_node = get_last_node(p_list_1); 
+    p_last_node->next = p_list_2->next; 
+    if(is_list_empty(p_list_2) == FALSE) 
+        p_list_2->next->prev = p_last_node; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
+void concat_lists(list_t* p_list_1, list_t** pp_list_2) 
+{
+    list_t* p_list_2 = NULL; 
+    node_t* p_last_node = NULL; 
+
+    p_last_node = get_last_node(p_list_1); 
+    p_last_node->next = p_list_2->next; 
+    if(is_list_empty(p_list_2) == FALSE) 
+        p_list_2->next->prev = p_last_node; 
+
+    free(p_list_2); 
+    p_list_2 = NULL; 
+    *pp_list_2 = NULL; 
+
+    return (SUCCESS); 
+} 
+
