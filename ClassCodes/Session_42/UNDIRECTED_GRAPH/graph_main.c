@@ -33,6 +33,22 @@ int main(void)
 
     show_graph(g, "Initial state:"); 
 
+    status = remove_edge(g, 2, 5); 
+    assert(status == SUCCESS); 
+    status = remove_edge(g, 2, 3); 
+    assert(status == SUCCESS); 
+    status = remove_edge(g, 6, 2); 
+    assert(status == SUCCESS); 
+    status = remove_edge(g, 6, 5); 
+    assert(status == SUCCESS); 
+
+    show_graph(g, "After removing edges, (2, 5), (2, 3), (6, 2), (6, 5):"); 
+
+    status = remove_vertex(g, 3); 
+    assert(status == SUCCESS); 
+
+    show_graph(g, "After removing vertex: 3"); 
+
     status = destroy_graph(&g); 
     assert(status == SUCCESS && g == NULL); 
 

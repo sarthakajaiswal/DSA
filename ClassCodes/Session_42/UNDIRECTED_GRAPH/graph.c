@@ -89,6 +89,36 @@ status_t add_edge(graph_t* g, vertex_t v_start, vertex_t v_end)
     return (SUCCESS); 
 } 
 
+status_t remove_edge(graph_t* g, vertex_t v_start, vertex_t v_end) 
+{
+    vnode_t* pv_start = NULL; 
+    vnode_t* pv_end = NULL; 
+    hnode_t* ph_end_in_start = NULL; 
+    hnode_t* ph_start_in_end = NULL; 
+
+    pv_start = v_search_node(g->pv_head_node, v_start); 
+    if(pv_start == NULL)   
+        return (G_INVALID_VERTEX); 
+
+    pv_end = v_search_node(g->pv_head_node, v_end); 
+    if(pv_end == NULL) 
+        return (G_INVALID_VERTEX); 
+
+    ph_end_in_start = h_search_node(pv_start->ph_head_node, v_end); 
+    if(ph_end_in_start == NULL) 
+        return (G_INVALID_EDGE); 
+    ph_start_in_end = h_search_node(pv_end->ph_head_node, v_start); 
+    if(ph_start_in_end == NULL) 
+        return (G_INVALID_EDGE); 
+
+    h_generic_delete(ph_end_in_start); 
+    h_generic_delete(ph_start_in_end); 
+
+    g->nr_edges -= 1; 
+
+    return (SUCCESS); 
+} 
+
 void show_graph(graph_t* g, const char* msg) 
 {
     vnode_t* pv_run = NULL; 
