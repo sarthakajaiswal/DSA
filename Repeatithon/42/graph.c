@@ -20,7 +20,18 @@ typedef struct hnode    hnode_t;
 typedef hnode_t         hlist_t; 
 typedef struct vnode    vnode_t; 
 typedef vnode_t         vlist_t; 
-typedef struct graph    graph_t; 
+typedef struct graph    graph_t;
+typedef enum color      color_t;  
+typedef enum color      color_t; 
+typedef enum color      color_t; 
+typedef enum color      color_t; 
+typedef enum color      color_t; 
+
+enum color {WHITE=0, GREY, BLACK}; 
+enum color { WHITE=0, GREY, BLACK }; 
+enum color { WHITE=0, GREY, BLACK }; 
+enum color { WHITE=0, GREY, BLACK }; 
+enum color { WHITE=0, GREY, BLACK }; 
 
 struct hnode 
 {
@@ -33,6 +44,7 @@ struct vnode
 {
     vertex_t v; 
     hlist_t* ph_head_node; 
+    color_t color; 
     struct vnode* v_next; 
     struct vnode* v_prev; 
 }; 
@@ -1288,6 +1300,1420 @@ status_t destroy_graph(graph_t** pp_g)
     *pp_g = NULL; 
 
     return (SUCCESS); 
+} 
+
+void dfs(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    reset(g); 
+
+    printf("[START]<->"); 
+    for(pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run=pv_run->v_next) 
+        if(pv_run->color == WHITE) 
+            dfs_visit(g, pv_run); 
+    printf("{END]\n"); 
+} 
+
+void dfs(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    reset(g); 
+
+    printf("[START]<->"); 
+    for(pv_run = g->pv_head_node->v_next; pv_run != pv_run->v_next; pv_run = pv_run->v_next) 
+        if(pv_run->color == WHITE) 
+            dfs_visit(g, pv_run); 
+    printf("[END]"); 
+} 
+
+void dfs(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    reset(g); 
+
+    printf("[START]<->"); 
+    for(pv_run = g->pv_head_node->v_next; pv_run != pv_run->v_next; pv_run = pv_run->v_next) 
+        if(pv_run->color == WHITE) 
+            dfs_visit(g, pv_run); 
+    printf("[END]"); 
+} 
+
+void dfs(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    reset(g); 
+
+    printf("[START]<->"); 
+    for(pv_run = g->pv_head_node->v_next; pv_run != pv_run->v_next; pv_run = pv_run->v_next) 
+        if(pv_run->color == WHITE) 
+            dfs_visit(g, pv_run); 
+    printf("[END]"); 
+} 
+
+void dfs(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    reset(g); 
+
+    printf("[START]<->"); 
+    for(pv_run = g->pv_head_node->v_next; pv_run != pv_run->v_next; pv_run = pv_run->v_next) 
+        if(pv_run->color == WHITE) 
+            dfs_visit(g, pv_run); 
+    printf("[END]"); 
+} 
+
+void bfs(graph_t* g, vertex_t v) 
+{
+    vnode_t* pv_node = NULL; 
+    vnode_t* pv = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+    hnode_t* ph_run = NULL; 
+    queue_node_t* p_queue = NULL; 
+
+    pv_node = v_search_node(g->pv_head_node, v); 
+    if(NULL == pv_node) 
+        return (G_INVALID_VERTEX); 
+
+    reset(g); 
+    pv_node->color = GREY; 
+
+    p_queue = create_queue(); 
+    assert(enqueue(p_queue, pv_node) == SUCCESS); 
+
+    printf("[START]<->"); 
+
+    while(is_queue_empty(p_queue) != TRUE) 
+    {
+        pv = NULL; 
+        assert(dequeue(p_queue, &pv) == SUCCESS); 
+
+        printf("[%d]->", pv->v); 
+
+        for(ph_run = pv->ph_head_node->h_next; ph_run != pv->ph_head_node; ph_run = ph_run->h_next) 
+        {
+            pv_h_in_vlist = v_search_node(g->pv_head_node, ph_run->v); 
+            if(pv_h_in_vlist->color == WHITE) 
+            {
+                pv_h_in_vlist->color = GREY; 
+                enqueue(p_queue, pv_h_in_vlist); 
+            } 
+        } 
+
+        pv->color = BLACK; 
+    } 
+
+    printf("[END]"); 
+
+    assert(destroy_queue(p_queue) == SUCCESS); 
+    p_queue = NULL; 
+} 
+
+void bfs(graph_t* g, vertex_t v) 
+{
+    vnode_t* pv_node = NULL; 
+    vnode_t* pv = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+    hnode_t* ph_run = NULL; 
+    queue_node_t* p_queue = NULL; 
+
+    pv_node = v_search_node(g->pv_head_node, v); 
+    if(pv_node == NULL) 
+        return (G_INVALID_VERTEX); 
+
+    reset(g); 
+    pv_node->color = GREY; 
+
+    p_queue = create_queue(); 
+    assert(enqueue(p_queue, pv_node) == SUCCESS); 
+
+    while(is_queue_empty(p_queue) == FALSE) 
+    {
+        pv = NULL; 
+        assert(dequeue(p_queue, &pv) == SUCCESS); 
+        printf("[%d]->", pv->v); 
+
+        for(ph_run = pv->ph_head_node->h_next; pv != pv->ph_head_node; ph_run = ph_run->h_next) 
+        {
+            pv_h_in_vlist = v_search_node(g->pv_head_node, ph_run->v); 
+            if(pv_h_in_vlist->color == WHITE) 
+            {
+                pv_h_in_vlist->color = GREY; 
+                assert(enqueue(p_queue, pv_h_in_vlist) == SUCCESS); 
+            } 
+        } 
+
+        pv->color = BLACK; 
+    } 
+
+    printf("[END]"); 
+
+    assert(destroy_queue(p_queue) == SUCCESS); 
+    p_queue = NULL; 
+} 
+
+void bfs(graph_t* g, vertex_t v) 
+{
+    vnode_t* pv_node = NULL; 
+    vnode_t* pv = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+    hnode_t* ph_run = NULL; 
+    queue_node_t* p_queue = NULL; 
+
+    pv_node = v_search_node(g->pv_head_node, v); 
+    if(pv_node == NULL) 
+        return (G_INVALID_VERTEX); 
+
+    resetg(g); 
+
+    pv_node->color = GREY; 
+
+    p_queue = create_queue(); 
+    assert(enqueue(p_queue, pv_node) == SUCCESS); 
+
+    printf("[START]"); 
+
+    while(is_queue_empty(p_queue) == FALSE) 
+    {
+        pv = NULL; 
+        assert(dequeue(p_queue, &pv) == SUCCESS); 
+
+        printf("[%d]->", pv->v); 
+
+        for(ph_run = pv->ph_head_node->h_next; ph_run != pv->ph_head_node; ph_run = ph_run->h_next) 
+        {
+            pv_h_in_vlist = v_search_node(g->pv_head_node, ph_run->v); 
+            if(pv_h_in_vlist->color == WHITE) 
+            {
+                pv_h_in_vlist->color = GREY; 
+                assert(enqueue(p_queue, pv_h_in_vlist) == SUCCESS); 
+            } 
+        } 
+
+        pv->color = BLACK; 
+    } 
+
+    pv->color = BLACK; 
+} 
+
+void bfs(graph_t* g, vertex_t v) 
+{
+    vnode_t* pv_node = NULL; 
+    vnode_t* pv = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+    hnode_t* ph_run = NULL; 
+    queue_node_t* p_queue = NULL; 
+
+    pv_node = v_search_node(g->pv_head_node, v); 
+    if(NULL == pv_node) 
+        return (G_INVALID_VERTEX); 
+
+    reset(g); 
+
+    pv_node->color = GREY; 
+    p_queue = create_queue(); 
+    enqueue(p_queue, pv_node); 
+
+    printf("[START]->"); 
+
+    while(is_queue_empty(p_queue) == FALSE) 
+    {
+        pv = NULL; 
+        assert(dequeue(p_queue, &pv) == SUCCESS); 
+
+        printf("[%d]->", pv->v); 
+
+        for(ph_run = pv->ph_head_node->h_next; ph_run != pv->ph_head_node; ph_run = ph_run->h_next) 
+        {
+            pv_h_in_vlist = v_search_node(g->pv_head_node, ph_run->v); 
+            if(pv_h_in_vlist->color == WHITE) 
+            {
+                pv_h_in_vlist->color = GREY; 
+                enqueue(p_queue, pv_h_in_vlist); 
+            } 
+        } 
+
+        pv->color = BLACK; 
+    } 
+
+    printf("[END]"); 
+
+    destroy_queue(p_queue); 
+    p_queue = NULL; 
+} 
+
+void bfs(graph_t* g, vertex_t v) 
+{
+    vnode_t* pv_node = NULL; 
+    vnode_t* pv = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+    hnode_t* ph_run = NULL; 
+    queue_node_t* p_queue = NULL; 
+
+    pv_node = v_search_node(g->pv_head_node, v); 
+    if(NULL == pv_node) 
+        return (G_INVALID_VERTEX); 
+
+    reset(g); 
+
+    p_queue = create_queue(); 
+    pv_node->color = GREY; 
+    assert(enqueue(p_queue, pv_node) == SUCCESS); 
+
+    printf("[START]->"); 
+
+    while(is_queue_empty(p_queue) != TRUE) 
+    {
+        pv = NULL; 
+        assert(dequeue(p_queue, &pv) == SUCCESS); 
+
+        printf("[%d]->", pv->v); 
+
+        for(ph_run = pv->ph_head_node->h_next; ph_run != pv->ph_head_node; ph_run = ph_run->h_next) 
+        {
+            pv_h_in_vlist = v_search_node(g->pv_head_node, ph_run->v); 
+            if(pv_h_in_vlist->color == WHITE) 
+            {
+                pv_h_in_vlist->color = GREY; 
+                enqueue(p_queue, pv_h_in_vlist); 
+            } 
+        } 
+
+        pv->color = BLACK; 
+    } 
+
+    printf("[END]"); 
+
+    assert(destroy_queue(p_queue) == SUCCESS); 
+    p_queue = NULL; 
+} 
+
+// graph helper functions 
+void reset(graph_t* g) 
+{
+    vnode_t* pv_run = NULL; 
+
+    for(pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run->v_next) 
+        pv_run->color = WHITE; 
+} 
+
+void reset(graph_t* g) 
+{
+    for(vnode_t* pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run->v_next) 
+        pv_run->color = WHITE; 
+} 
+
+void reset(graph_t* g) 
+{
+    for(vnode_t* pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run->v_next) 
+        pv_run->color = WHITE; 
+} 
+
+void reset(graph_t* g) 
+{   
+    for(vnode_t* pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run->v_next) 
+        pv_run->color = WHITE; 
+} 
+
+void reset(graph_t* g) 
+{
+    for(vnode_t* pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run->v_next) 
+        pv_run->color = WHITE; 
+} 
+
+void dfs_visit(graph_t* g, vnode_t* pv_node) 
+{
+    hnode_t* ph_run = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+
+    pv_node->color = GREY; 
+    printf("[%d]<->", ph_run->v); 
+
+    for(ph_run = pv_node->ph_head_node->h_next; ph_run != pv_node->ph_head_node; ph_run = ph_run->h_next) 
+    {
+        pv_h_in_vlist = v_search_node(g, ph_run->v); 
+        if(pv_h_in_vlist->color == WHITE) 
+            dfs_visit(g, pv_h_in_vlist); 
+    } 
+    pv_node->color = BLACK; 
+} 
+
+void dfs_visit(graph_t* g, vnode_t* pv_node) 
+{
+    hnode_t* ph_run = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+
+    pv_node->color = GREY; 
+    printf("[%d]<->", pv_node->v); 
+
+    for(ph_run = pv_node->ph_head_node->h_next; ph_run != pv_node->ph_head_node; ph_run = ph_run->h_next) 
+    {
+        pv_h_in_vlist = v_search_node(g, ph_run->v); 
+        if(pv_h_in_vlist->color == WHITE)   
+            dfs_visit(g, pv_h_in_vlist); 
+    } 
+
+    pv_node->color = BLACK; 
+} 
+
+void dfs_visit(graph_t* g, vnode_t* pv_node) 
+{
+    hnode_t* ph_run = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+
+    pv_node->color = GREY; 
+    printf("[%d]<->", pv_node->v); 
+
+    for(ph_run = pv_node->ph_head_node->h_next; ph_run != pv_node->ph_head_node; ph_run = ph_run->h_next) 
+    {
+        pv_h_in_vlist = v_search_node(g, ph_run->v); 
+        if(pv_h_in_vlist->color == WHITE) 
+            dfs_visit(g, pv_h_in_vlist); 
+    } 
+
+    pv_node->color = BLACK; 
+} 
+
+void dfs_visit(graph_t* g, vnode_t* pv_node) 
+{
+    hnode_t* ph_run = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+
+    pv_node->color = GREY; 
+    printf("[%d]<->", pv_node->v); 
+
+    for(ph_run = pv_node->ph_head_node->h_next; ph_run != pv_node->ph_head_node; ph_run = ph_run->h_next) 
+    {
+        pv_h_in_vlist = v_search_node(g, ph_run->v); 
+        if(pv_h_in_vlist->color == WHITE) 
+            dfs_visit(g, pv_h_in_vlist); 
+    } 
+
+    pv_node->color = BLACK; 
+} 
+
+void dfs_visit(graph_t* g, vnode_t* pv_node) 
+{
+    hnode_t* ph_run = NULL; 
+    vnode_t* pv_h_in_vlist = NULL; 
+
+    pv_node->color = GREY; 
+    printf("[%d]<->", pv_node->v); 
+
+    for(ph_run = pv_node->ph_head_node->h_next; ph_run != pv_node->ph_head_node; ph_run = ph_run->h_next) 
+    {
+        pv_h_in_vlist = v_search_node(g, ph_run->v); 
+        if(pv_h_in_vlist->color == WHITE) 
+            dfs_visit(g, pv_h_in_vlist); 
+    } 
+
+    pv_node->color = BLACK; 
+} 
+
+/* Graph helper routines */ 
+/* Queue */ 
+queue_node_t* create_queue(void) 
+{
+    queue_node_t* p_new_queue = NULL; 
+
+    p_new_queue = q_get_node(0); 
+    p_new_queue->q_prev = p_new_queue; 
+    p_new_queue->q_next = p_new_queue; 
+
+    return (p_new_queue); 
+} 
+
+queue_node_t* create_queue(void) 
+{
+    queue_node_t* p_new_queue = NULL; 
+
+    p_new_queue = q_get_node(0); 
+    p_new_queue->q_prev = p_new_queue; 
+    p_new_queue->q_next = p_new_queue; 
+
+    return (p_new_queue); 
+} 
+
+queue_node_t* create_queue(void) 
+{
+    queue_node_t* p_new_queue = NULL; 
+
+    p_new_queue = q_get_node(0); 
+    p_new_queue->q_prev = p_new_queue; 
+    p_new_queue->q_next = p_new_queue; 
+
+    return (p_new_queue); 
+} 
+
+queue_node_t* create_queue(void) 
+{
+    queue_node_t* p_new_queue = NULL; 
+
+    p_new_queue = q_get_node(0); 
+    p_new_queue->q_prev = p_new_queue; 
+    p_new_queue->q_next = p_new_queue; 
+
+    return (p_new_queue); 
+} 
+
+queue_node_t* create_queue(void) 
+{
+    queue_node_t* p_new_queue = NULL; 
+
+    p_new_queue = q_get_node(0); 
+    p_new_queue->q_prev = p_new_queue; 
+    p_new_queue->q_next = p_new_queue; 
+
+    return (p_new_queue); 
+} 
+
+status_t enqueue(queue_node_t* p_queue, vnode_t* pv_node) 
+{
+    q_generic_insert(p_queue->q_prev, q_get_node(pv_node), p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t enqueue(queue_node_t* p_queue, vnode_t* pv_node) 
+{
+    q_generic_insert(p_queue->q_prev, q_get_node(pv_node), p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t enqueue(queue_node_t* p_queue, vnode_t* pv_node) 
+{
+    q_generic_insert(p_queue->q_prev, q_get_node(pv_node), p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t enqueue(queue_node_t* p_queue, vnode_t* pv_node) 
+{
+    q_generic_insert(p_queue->q_prev, q_get_node(pv_node), p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t enqueue(queue_node_t* p_queue, vnode_t* pv_node) 
+{
+    q_generic_insert(p_queue->q_prev, q_get_node(pv_node), p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t dequeue(queue_node_t* p_queue, vnode_t** ppv_node) 
+{
+    if(is_queue_empty(p_queue) == TRUE) 
+    {
+        *ppv_node = NULL; 
+        return (QUEUE_EMPTY); 
+    } 
+
+    *ppv_node = p_queue->q_prev->pv; 
+    q_generic_delete(p_queue->q_prev); 
+    return (SUCCESS); 
+} 
+
+status_t dequeue(queue_node_t* p_queue, vnode_t** ppv_node) 
+{
+    if(is_queue_empty(p_queue) == TRUE) 
+    {
+        *ppv_node = NULL; 
+        return (QUEUE_EMPTY); 
+    } 
+
+    *ppv_node = p_queue->q_prev->pv; 
+    q_generic_delete(p_queue->q_prev); 
+    return (SUCCESS); 
+} 
+
+status_t dequeue(queue_node_t* p_queue, vnode_t** ppv_node) 
+{
+    if(is_queue_empty(p_queue) == TRUE) 
+    {
+        *ppv_node = NULL; 
+        return (QUEUE_EMPTY); 
+    } 
+
+    *ppv_node = p_queue->q_prev->pv;
+    q_generic_delete(p_queue->q_prev); 
+    return (SUCCESS); 
+} 
+
+status_t dequeue(queue_node_t* p_queue, vnode_t** ppv_node) 
+{
+    if(is_queue_empty(p_queue) == TRUE) 
+    {
+        *ppv_node = NULL; 
+        return (QUEUE_EMPTY); 
+    } 
+
+    *ppv_node = p_queue->q_prev->pv; 
+    q_generic_delete(p_queue->q_prev); 
+    return (SUCCESS); 
+} 
+
+status_t dequeue(queue_node_t* p_queue, vnode_t** ppv_node) 
+{
+    if(is_queue_empty(p_queue) == TRUE) 
+    {
+        *ppv_node = NULL; 
+        return (QUEUE_EMPTY); 
+    } 
+
+    *ppv_node = p_queue->q_prev->pv; 
+    q_generic_delete(p_queue->q_prev); 
+    return (SUCCESS); 
+} 
+
+int is_queue_empty(queue_node_t* p_queue) 
+{
+    return (p_queue->q_next==p_queue && p_queue->q_prev==p_queue); 
+} 
+
+int is_queue_empty(queue_node_t* p_queue) 
+{
+    return (p_queue->q_next == p_queue && p_queue->q_prev == p_queue); 
+} 
+
+int is_queue_empty(queue_node_t* p_queue) 
+{
+    return (p_queue->q_next == p_queue && p_queue->q_prev == p_queue); 
+} 
+
+int is_queue_empty(queue_node_t* p_queue) 
+{
+    return (p_queue->q_prev == p_queue && p_queue->q_next == p_queue); 
+} 
+
+int is_queue_empty(queue_node_t* p_queue) 
+{
+    return (p_queue->q_prev == p_queue && p_queue->q_next == p_queue); 
+} 
+
+status_t destroy_queue(queue_node_t* p_queue) 
+{
+    queue_node_t* pq_run = NULL; 
+    queue_node_t* pq_run_next = NULL; 
+
+    for(pq_run = p_queue->q_next; pq_run != p_queue; pq_run = pq_run_next) 
+    {
+        pq_run_next = pq_run->q_next; 
+        free(pq_run); 
+    } 
+
+    free(p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t destroy_queue(queue_node_t* p_queue) 
+{
+    queue_node_t* pq_run = NULL; 
+    queue_node_t* pq_run_next = NULL; 
+
+    for(pq_run = p_queue->q_next; pq_run != p_queue; pq_run = pq_run->q_next) 
+    {
+        pq_run_next = pq_run->q_next; 
+        free(pq_run); 
+    } 
+
+    free(p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t destroy_queue(queue_node_t* p_queue) 
+{
+    queue_node_t* pq_run = NULL; 
+    queue_node_t* pq_run_next = NULL; 
+
+    for(pq_run = p_queue->q_next; pq_run != p_queue; pq_run = pq_run->q_next) 
+    {
+        pq_run_next = pq_run->q_next; 
+        free(pq_run); 
+    } 
+
+    free(p_queue); 
+    return (SUCCESS); 
+} 
+
+status_t destroy_queue(queue_node_t* p_queue) 
+{
+    queue_node_t* pq_run = NULL; 
+    queue_node_t* pq_run_next = NULL; 
+
+    for(pq_run = p_queue->q_next; pq_run != p_queue; pq_run = pq_run_next) 
+    {
+        pq_run_next = pq_run->q_next; 
+        free(pq_run); 
+    } 
+    free(p_queue); 
+
+    return (SUCCESS); 
+} 
+
+status_t destroy_queue(queue_node_t* p_queue) 
+{
+    queue_node_t* pq_run = NULL; 
+    queue_node_t* pq_run_next = NULL; 
+
+    for(pq_run = p_queue->q_next; pq_run != p_queue; pq_run = pq_run->q_next) 
+    {
+        pq_run_next = pq_run->q_next; 
+        free(pq_run); 
+    } 
+    free(p_queue); 
+
+    return (SUCCESS); 
+} 
+
+void q_generic_insert(queue_node_t* pq_begin, queue_node_t* pq_mid, queue_node_t* pq_end) 
+{
+    pq_mid->q_next = pq_end; 
+    pq_mid->q_prev = pq_begin; 
+    pq_begin->q_next = pq_mid; 
+    pq_end->q_prev = pq_mid; 
+} 
+
+void q_generic_insert(queue_node_t* pq_begin, queue_node_t* pq_mid, queue_node_t* pq_end) 
+{
+    pq_mid->q_next = pq_end; 
+    pq_mid->q_prev = pq_begin; 
+    pq_begin->q_next = pq_mid; 
+    pq_end->q_prev = pq_mid; 
+} 
+
+void q_generic_insert(queue_node_t* pq_begin, queue_node_t* pq_mid, queue_node_t* pq_end) 
+{
+    pq_mid->q_prev = pq_begin; 
+    pq_mid->q_next = pq_end; 
+    pq_begin->q_next = pq_mid; 
+    pq_end->q_prev = pq_mid; 
+} 
+
+void q_generic_insert(queue_node_t* pq_begin, queue_node_t* pq_mid, queue_node_t* pq_end) 
+{
+    pq_mid->q_prev = pq_begin; 
+    pq_mid->q_next = pq_end; 
+    pq_begin->q_next = pq_mid; 
+    pq_end->q_prev = pq_mid; 
+} 
+
+void q_geenric_insert(queue_node_t* pq_begin, queue_node_t* pq_mid, queue_node_t* pq_end) 
+{
+    pq_mid->q_prev = pq_begin; 
+    pq_mid->q_next = pq_end; 
+    pq_begin->q_next = pq_mid; 
+    pq_end->q_prev = pq_mid; 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    free(pq_delete_node); 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    free(pq_delete_node); 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    delete(pq_delete_node); 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    free(pq_delete_node); 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    free(pq_delete_node); 
+} 
+
+void q_generic_delete(queue_node_t* pq_delete_node) 
+{
+    pq_delete_node->q_prev->q_next = pq_delete_node->q_next; 
+    pq_delete_node->q_next->q_prev = pq_delete_node->q_prev; 
+    free(pq_delete_node); 
+} 
+
+queue_node_t* q_get_node(vnode_t* pv_node) 
+{
+    queue_node_t* pq_new_node = NULL; 
+
+    pq_new_node = (queue_node_t*)xmalloc(sizeof(queue_node_t)); 
+    pq_new_node->pv = pv_node; 
+    pq_new_node->q_prev = NULL; 
+    pq_new_node->q_next = NULL; 
+
+    return (pq_new_node); 
+} 
+
+queue_node_t* q_get_node(vnode_t* pv_node) 
+{
+    queue_node_t* pq_new_node = NULL; 
+
+    pq_new_node = (queue_node_t*)xmalloc(sizeof(queue_node_t)); 
+    pq_new_node->pv = pv_node; 
+    pq_new_node->q_prev = NULL; 
+    pq_new_node->q_next = NULL; 
+
+    return (pq_new_node); 
+} 
+
+queue_node_t* q_get_node(vnode_t* new_pv_node) 
+{
+    queue_node_t* pq_new_node = NULL; 
+
+    pq_new_node = (queue_node_t*)xmalloc(sizeof(queue_node_t)); 
+    pq_new_node->pv = new_pv_node; 
+    pq_new_node->q_prev = pq_new_node; 
+    pq_new_node->q_next = pq_new_node; 
+    
+    return (pq_new_node); 
+} 
+
+queue_node_t* q_get_node(vnode_t* new_pv_node) 
+{
+    queue_node_t* pq_new_node = NULL; 
+
+    pq_new_node = (queue_node_t*)xmalloc(sizeof(queue_node_t)); 
+    pq_new_node->pv = new_pv_node; 
+    pq_new_node->q_next = NULL; 
+    pq_new_node->q_prev = NULL; 
+
+    return (pq_new_node); 
+} 
+
+queue_node_t* q_get_node(vnode_t* new_pv_node) 
+{
+    queue_node_t* pq_new_node = NULL; 
+
+    pq_new_node = (queue_node_t*)xmalloc(sizeof(queue_node_t)); 
+    pq_new_node->pv = new_pv_node; 
+    pq_new_node->q_next = pq_new_node; 
+    pq_new_node->q_prev = pq_new_node; 
+
+    return (pq_new_node); 
+} 
+
+/* Vertical list */ 
+vlist_t* v_create_list(void) 
+{
+    vlist_t* p_new_list = NULL; 
+
+    p_new_list = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    p_new_list->ph_head_node = NULL; 
+    p_new_list->color = WHITE; 
+    p_new_list->v_next = NULL; 
+    p_new_list->v_prev = NULL; 
+
+    return (p_new_list); 
+} 
+
+vlist_t* v_create_list(void) 
+{
+    vlist_t* p_new_list = NULL; 
+
+    p_new_list = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    p_new_list->ph_head_node = NULL; 
+    p_new_list->v_next = NULL; 
+    p_new_list->v_prev = NULL; 
+
+    return (p_new_list); 
+} 
+
+vlist_t* v_create_list(void) 
+{
+    vlist_t* p_new_list = NULL; 
+
+    p_new_list = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    p_new_list->ph_head_node = NULL; 
+    p_new_list->v_next = NULL; 
+    p_new_list->v_prev = NULL; 
+
+    return (p_new_list); 
+} 
+
+vlist_t* v_create_list(void) 
+{
+    vlist_t* p_new_list = NULL; 
+
+    p_new_list = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    p_new_list->ph_head_node = NULL; 
+    p_new_list->v_next = NULL; 
+    p_new_list->v_prev = NULL; 
+
+    return (p_new_list); 
+} 
+
+vlist_t* v_create_list(void) 
+{
+    vnode_t* pv_head_node = NULL; 
+
+    pv_head_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_head_node->ph_head_node = NULL; 
+    pv_head_node->v_next = NULL; 
+    pv_head_node->v_prev = NULL; 
+
+    return (pv_head_node); 
+} 
+
+status_t v_insert_end(vlist_t* pv_list, vertex_t new_vertex) 
+{
+    v_generic_insert(pv_list->v_prev, v_get_list_node(new_vertex), pv_list); 
+    return (SUCCESS); 
+} 
+
+status_t v_insert_end(vlist_t* pv_list, vertex_t new_vertex) 
+{
+    v_generic_insert(pv_list->v_prev, v_get_list_node(new_vertex), pv_list); 
+    return (SUCCESS); 
+} 
+
+status_t v_insert_end(vlist_t* pv_list, vertex_t new_vertex) 
+{
+    v_generic_insert(pv_list->v_prev, v_get_list_node(new_vertex), pv_list); 
+    return (SUCCESS); 
+} 
+
+status_t v_insert_end(vlist_t* pv_list, vertex_t new_vertex) 
+{
+    v_generic_insert(pv_list->v_prev, v_get_list_node(new_vertex), pv_list); 
+    return (SUCCESS); 
+} 
+
+status_t v_insert_end(vlist_t* pv_list, vertex_t new_vertex) 
+{
+    v_generic_inserT(pv_list->v_prev, v_get_list_node(new_vertex), pv_list); 
+    return (SUCCESS); 
+} 
+
+// helper routines 
+void v_generic_insert(vnode_t* pv_beg, vnode_t* pv_mid, vnode_t* pv_end) 
+{
+    pv_mid->v_prev = pv_beg; 
+    pv_mid->v_next = pv_end; 
+    pv_beg->v_next = pv_mid; 
+    pv_end->v_prev = pv_mid; 
+}  
+
+void v_generic_insert(vnode_t* pv_beg, vnode_t* pv_mid, vnode_t* pv_end) 
+{
+    pv_mid->v_prev = pv_beg; 
+    pv_mid->v_next = pv_end;
+    pv_beg->v_next = pv_mid; 
+    pv_end->v_prev = pv_mid; 
+} 
+
+void v_generic_insert(vnode_t* pv_beg, vnode_t* pv_mid, vnode_t* pv_end) 
+{
+    pv_mid->v_prev = pv_beg; 
+    pv_mid->v_next = pv_end; 
+    pv_beg->v_next = pv_mid; 
+    pv_end->v_prev = pv_mid; 
+} 
+
+void v_generic_insert(vnode_t* pv_beg, vnode_t* pv_mid, vnode_t* pv_end) 
+{
+    pv_mid->v_prev = pv_beg; 
+    pv_mid->v_next = pv_end; 
+    pv_beg->v_next = pv_mid; 
+    pv_end->v_prev = pv_beg; 
+} 
+
+void v_generic_insert(vnode_t* pv_beg, vnode_t* pv_mid, vnode_t* pv_end) 
+{
+    pv_mid->v_prev = pv_beg; 
+    pv_mid->v_next = pv_end; 
+    pv_beg->v_next = pv_mid; 
+    pv_end->v_prev = pv_mid; 
+} 
+
+void v_generic_delete(vnode_t* pv_delete_node) 
+{
+    pv_delete_node->v_next->v_prev = pv_delete_node->v_prev; 
+    pv_delete_node->v_prev->v_next = pv_delete_node->v_next; 
+    free(pv_delete_node); 
+} 
+
+void v_generic_delete(vnode_t* pv_delete_node) 
+{
+    pv_delete_node->v_next->v_prev = pv_delete_node->v_prev; 
+    pv_delete_node->v_prev->v_next = pv_delete_node->v_next; 
+    free(pv_delete_node); 
+    pv_delete_node = NULL; 
+} 
+
+void v_generic_delete(vnode_t* pv_delete_node) 
+{
+    pv_delete_node->v_next->v_prev = pv_delete_node->v_prev; 
+    pv_delete_node->v_prev->v_next = pv_delete_node->v_next; 
+    free(pv_delete_node); 
+} 
+
+void v_generic_delete(vnode_t* pv_delete_node) 
+{
+    pv_delete_node->v_next->v_prev = pv_delete_node->v_prev; 
+    pv_delete_node->v_prev->v_next = pv_delete_node->v_next; 
+    free(pv_delete_node); 
+} 
+
+void v_generic_delete(vnode_t* pv_delete_node) 
+{
+    pv_delete_node->v_next->v_prev = pv_delete_node->v_prev; 
+    pv_delete_node->v_prev->v_next = pv_delete_node->v_next; 
+    free(pv_delete_node); 
+} 
+
+vnode_t* v_search_vertex(vlist_t* pv_list, vertex_t v) 
+{
+    for(vnode_t* pv_run = pv_list->v_next; pv_run != pv_list; pv_run = pv_run->v_next) 
+        if(pv_run->v == v) 
+            return (pv_run); 
+    return (NULL); 
+} 
+
+vnode_t* v_search_vertex(vlist_t* pv_list, vertex_t search_vertex) 
+{
+    for(vnode_t* pv_run = pv_list->v_next; pv_run != pv_list; pv_run = pv_run->v_next) 
+        if(pv_run->v == search_vertex) 
+            return (pv_run); 
+    return (NULL); 
+} 
+
+vnode_t* v_search_vertex(vlist_t* pv_list, vertex_t search_vertex) 
+{
+    for(vnode_t* pv_run = pv_list->v_next; pv_run != pv_list; pv_run = pv_run->v_next) 
+        if(pv_run->v == search_vertex) 
+            return (pv_run); 
+    return (NULL); 
+} 
+
+vnode_t* v_search_vertex(vlist_t* pv_list, vertex_t search_vertex) 
+{
+    for(vnode_t* pv_run = pv_list->v_next; pv_run != pv_list; pv_run = pv_run->v_next) 
+        if(pv_run->v == search_vertex) 
+            return (pv_run); 
+    return (NULL); 
+} 
+
+vnode_t* v_search_vertex(vlist_t* pv_list, vertex_t search_vertex) 
+{
+    for(vnode_t* pv_run = pv_list->v_next; pv_run != pv_list; pv_run = pv_list->v_next) 
+        if(pv_run->v == search_vertex) 
+            return (pv_run); 
+    return (NULL); 
+} 
+
+vnode_t* v_get_list_node(vertex_t v) 
+{
+    vnode_t* pv_new_node = NULL; 
+
+    pv_new_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_new_node->v = v; 
+    pv_new_node->color = WHITE; 
+    pv_new_node->ph_head_node = NULL; 
+    pv_new_node->v_next = NULL; 
+    pv_new_node->v_prev = NULL; 
+
+    return (pv_new_node); 
+} 
+
+vnode_t* v_get_list_node(vertex_t v) 
+{
+    vnode_t* pv_new_node = NULL; 
+
+    pv_new_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_new_node->color = WHITE; 
+    pv_new_node->ph_head_node = NULL; 
+    pv_new_node->v_prev = NULL; 
+    pv_new_node->v_next = NULL; 
+
+    return (pv_new_node); 
+} 
+
+vnode_t* v_get_list_node(vertex_t v) 
+{
+    vnode_t* pv_new_node = NULL; 
+
+    pv_new_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_new_node->color = WHITE; 
+    pv_new_node->ph_head_node = NULL; 
+    pv_new_node->v_prev = NULL; 
+    pv_new_node->v_next = NULL; 
+
+    return (pv_new_node); 
+} 
+
+vnode_t* v_get_list_node(vertex_t v) 
+{
+    vnode_t* pv_new_node = NULL; 
+
+    pv_new_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_new_node->color = WHITE; 
+    pv_new_node->ph_head_node = NULL; 
+    pv_new_node->v_prev = NULL; 
+    pv_new_node->v_next = NULL; 
+
+    return (pv_new_node); 
+} 
+
+vnode_t* v_get_list_node(vertex_t v) 
+{
+    vnode_t* pv_new_node = NULL; 
+
+    pv_new_node = (vnode_t*)xmalloc(sizeof(vnode_t)); 
+    pv_new_node->color = WHITE; 
+    pv_new_node->ph_head_node = NULL; 
+    pv_new_node->v_prev = NULL; 
+    pv_new_node->v_next = NULL; 
+
+    return (pv_new_node); 
+} 
+
+/* Horizontal list */ 
+hlist_t* h_create_list(void) 
+{
+    hnode_t* ph_head_node = NULL; 
+
+    ph_head_node = h_get_list_node(0); 
+    ph_head_node->h_next = ph_head_node; 
+    ph_head_node->h_prev = ph_head_node; 
+
+    return (ph_head_node); 
+} 
+
+hlist_t* h_create_list(void) 
+{
+    hnode_t* ph_list = NULL; 
+
+    ph_list = h_get_list_node(0); 
+    ph_list->h_prev = ph_list; 
+    ph_list->h_next = ph_list; 
+
+    return (ph_list); 
+} 
+
+hlist_t* h_create_list(void) 
+{
+    hnode_t* ph_list = NULL; 
+
+    ph_list = h_get_list_node(0); 
+    ph_list->h_next = ph_list; 
+    ph_list->h_prev = ph_list; 
+
+    return (ph_list); 
+} 
+
+hlist_t* h_create_list(void) 
+{
+    hnode_t* ph_list = NULL; 
+
+    ph_list = h_get_list_node(0); 
+    ph_list->h_prev = ph_list; 
+    ph_list->h_next = ph_list; 
+
+    return (ph_list); 
+} 
+
+hlist_t* h_create_list(void) 
+{
+    hnode_t* ph_head_node = NULL; 
+
+    ph_head_node = h_get_list_node(0); 
+    ph_head_node->h_prev = ph_head_node; 
+    ph_head_node->h_next = ph_head_node; 
+
+    return (ph_head_node); 
+} 
+
+status_t h_insert_end(hlist_t* ph_list, vertex_t new_vertex) 
+{
+    h_generic_insert(ph_list->h_prev, h_get_list_node(new_vertex), ph_list); 
+    return (SUCCESS); 
+} 
+
+status_t h_insert_end(hlist_t* ph_list, vertex_t new_vertex) 
+{
+    h_generic_insert(ph_list->h_prev, h_get_list_node(new_vertex), ph_list); 
+    return (SUCCESS); 
+} 
+
+status_t h_insert_end(hlist_t* ph_list, vertex_t new_vertex) 
+{
+    h_generic_insert(ph_list->h_prev, h_get_list_node(new_vertex), ph_list); 
+    return (SUCCESS); 
+} 
+
+status_t h_insert_end(hlist_t* ph_list, vertex_t new_vertex) 
+{ 
+    h_generic_insert(ph_list->h_prev, h_get_list_node(new_vertex), ph_list); 
+    return (SUCCESS); 
+} 
+
+status_t h_insert_end(hlist_t* ph_list, vertex_t new_vertex) 
+{
+    h_generic_insert(ph_list->h_prev, h_get_list_node(new_vertex), ph_list); 
+    return (SUCCESS); 
+} 
+
+// helpers 
+void h_generic_insert(hnode_t* ph_beg, hnode_t* ph_mid, hnode_t* ph_end) 
+{
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+    ph_beg->h_next = ph_mid; 
+    ph_end->h_prev = ph_mid; 
+} 
+
+void h_generic_insert(hnode_t* ph_beg, hnode_t* ph_mid, hnode_t* ph_end) 
+{
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+    ph_beg->h_next = ph_mid; 
+    ph_end->h_prev = ph_mid; 
+} 
+
+void h_generic_insert(hnode_t* ph_beg, hnode_t* ph_mid, hnode_t* ph_end) 
+{
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+    ph_beg->h_next = ph_mid; 
+    ph_end->h_prev = ph_mid; 
+} 
+
+void h_generic_insert(hnode_t* ph_beg, hnode_t* ph_mid, hnode_t* ph_end) 
+{
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+    ph_beg->h_next = ph_mid; 
+    ph_end->h_prev = ph_mid; 
+} 
+
+void h_generic_insert(hnode_t* ph_beg, hnode_t* ph_mid, hnode_t* ph_end) 
+{
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+    ph_mid->h_prev = ph_beg; 
+    ph_mid->h_next = ph_end; 
+} 
+
+void h_generic_delete(hnode_t* ph_delete_node) 
+{
+    ph_delete_node->h_prev->h_next = ph_delete_node->h_next; 
+    ph_delete_node->h_next->h_prev = ph_delete_node->h_prev; 
+    free(ph_delete_node); 
+} 
+
+void h_generic_delete(hnode_t* ph_delete_node) 
+{
+    ph_delete_node->h_prev->h_next = ph_delete_node->h_next; 
+    ph_delete_node->h_next->h_prev = ph_delete_node->h_prev; 
+    free(ph_delete_node); 
+} 
+
+void h_generic_delete(hnode_t* ph_delete_node) 
+{
+    ph_delete_node->h_prev->h_next = ph_delete_node->h_next; 
+    ph_delete_node->h_next->h_prev = ph_delete_node->h_prev; 
+    free(ph_delete_node); 
+} 
+
+void h_generic_delete(hnode_t* ph_delete_node) 
+{
+    ph_delete_node->h_prev->h_next = ph_delete_node->h_next; 
+    ph_delete_node->h_next->h_prev = ph_delete_node->h_prev; 
+    free(ph_delete_node); 
+} 
+
+void h_generic_delete(hnode_t* ph_delete_node) 
+{
+    ph_delete_node->h_prev->h_next = ph_delete_node->h_next; 
+    ph_delete_node->h_next->h_prev = ph_delete_node->h_prev; 
+    free(ph_delete_node); 
+} 
+
+hnode_t* h_search_node(hlist_t* ph_list, vertex_t search_vertex) 
+{
+    for(hnode_t* ph_run = ph_list->h_next; ph_run != ph_list; ph_run = ph_run->h_next) 
+        if(ph_run->v == search_vertex) 
+            return (ph_run); 
+    return (NULL); 
+} 
+
+hnode_t* h_search_node(hlist_t* ph_list, vertex_t search_vertex) 
+{
+    for(hnode_t* ph_run = ph_list->h_next; ph_run != ph_list; ph_run = ph_run->h_next) 
+        if(ph_run->v == search_vertex) 
+            return (ph_run); 
+    return (NULL); 
+} 
+
+hnode_t* h_search_node(hlist_t* ph_list, vertex_t search_vertex) 
+{ 
+    for(hnode_t* ph_run = ph_list->h_next; ph_run != ph_list; ph_run = ph_run->h_next) 
+        if(ph_run->v == search_vertex) 
+            return (ph_run); 
+    return (NULL); 
+}
+
+hnode_t* h_search_node(hlist_t* ph_list, vertex_t search_vertex) 
+{
+    for(hnode_t* ph_run = ph_list->h_next; ph_run != ph_list; ph_run = ph_run->h_next) 
+        if(ph_run->v == search_vertex) 
+            return (ph_run); 
+    return (NULL); 
+} 
+
+hnode_t* h_search_node(hlist_t* ph_list, vertex_t search_vertex) 
+{
+    hnode_t* ph_run = NULL; 
+    for(ph_run = ph_list->h_next; ph_run != ph_list; ph_run = ph_run->h_next) 
+        if(ph_run->v == search_vertex) 
+            return (ph_run); 
+    return (NULL); 
+} 
+
+hnode_t* h_get_list_node(vertex_t new_vertex) 
+{
+    hnode_t* p_new_node = NULL; 
+
+    p_new_node = (hnode_t*)xmalloc(sizeof(hnode_t)); 
+    p_new_node->v = new_vertex; 
+    p_new_node->h_prev = NULL; 
+    p_new_node->h_next = NULL; 
+
+    return (p_new_node); 
+} 
+
+hnode_t* h_get_list_node(vertex_t new_vertex) 
+{
+    hnode_t* ph_new_node = NULL; 
+
+    ph_new_node = (hnode_t*)xmalloc(sizeof(hnode_t)); 
+    ph_new_node->v = new_vertex; 
+    ph_new_node->h_prev = NULL; 
+    ph_new_node->h_next = NULL; 
+
+    return (ph_new_node); 
+} 
+
+hnode_t* h_get_list_node(vertex_t new_vertex) 
+{
+    hnode_t* ph_new_node = NULL; 
+
+    ph_new_node = (hnode_t*)xmalloc(sizeof(hnode_t)); 
+    ph_new_node->v = new_vertex; 
+    ph_new_node->h_prev = NULL; 
+    ph_new_node->h_next = NULL; 
+
+    return (ph_new_node); 
+} 
+
+hnode_t* h_get_list_node(vertex_t new_vertex) 
+{
+    hnode_t* ph_new_node = NULL; 
+
+    ph_new_node = (hnode_t*)xmalloc(sizeof(hnode_t)); 
+    ph_new_node->v = new_vertex; 
+    ph_new_node->h_prev = NULL; 
+    ph_new_node->h_next = NULL; 
+
+    return (ph_new_node); 
+} 
+
+hnode_t* h_get_list_node(vertex_t new_vertex) 
+{
+    hnode_t* ph_new_node = NULL; 
+
+    ph_new_node = (hnode_t*)xmalloc(sizeof(hnode_t)); 
+    ph_new_node->v = new_vertex; 
+    ph_new_node->h_prev = NULL; 
+    ph_new_node->h_next = NULL; 
+
+    retuen (ph_new_node); 
+} 
+
+void* xmalloc(size_t nr_bytes) 
+{
+    void* p = NULL; 
+
+    p = malloc(nr_bytes); 
+    if(NULL == p) 
+    {
+        puts("malloc() failed"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    return (p); 
+} 
+
+void* xmalloc(size_t nr_bytes) 
+{
+    void* p = NULL; 
+
+    p = malloc(nr_bytes); 
+    if(NULL == p) 
+    {
+        puts("malloc() failed"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    return (p); 
+} 
+
+void* xmalloc(size_t nr_bytes) 
+{
+    void* p = NULL;
+
+    p = malloc(nr_bytes); 
+    if(NULL == p) 
+    {
+        puts("malloc() failed"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    return (p); 
+} 
+
+void* xmalloc(size_t nr_bytes) 
+{
+    void* p = NULL; 
+
+    p = malloc(nr_bytes); 
+    if(NULL == p) 
+    {
+        puts("malloc() failed"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    return (p); 
+} 
+
+void* xmalloc(size_t size_in_bytes) 
+{
+    void* p = NULL; 
+
+    p = malloc(size_in_bytes); 
+    if(NULL == p) 
+    {
+        puts("malloc() failed"); 
+        exit(EXIT_FAILURE); 
+    } 
+
+    return (p); 
 } 
 
 // --------------------- 
