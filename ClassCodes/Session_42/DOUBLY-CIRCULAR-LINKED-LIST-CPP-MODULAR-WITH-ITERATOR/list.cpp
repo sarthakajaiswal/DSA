@@ -40,7 +40,7 @@ void list::insert_end(int new_data)
     generic_insert(head_node->prev, new node(new_data), head_node); 
 } 
 
-void list::insert_before(int existing_data, int new_data) 
+void list::insert_after(int existing_data, int new_data) 
 {
     node* existing_node = 0; 
     
@@ -56,14 +56,6 @@ void list::insert_before(int existing_data, int new_data)
     node* existing_node = search_node(existing_data); 
     if(existing_data == 0) 
         throw list_data_not_found("list::inert_before(): invalid existing data"); 
-    generic_insert(existing_node->prev, new node(new_data), existing_node); 
-} 
-
-void list::insert_before(int existing_data, int new_data) 
-{
-    node* existing_node = search_node(existing_data); 
-    if(existing_node == 0) 
-        throw list_data_not_found("list::insert_before(): invalid existing data"); 
     generic_insert(existing_node->prev, new node(new_data), existing_node); 
 } 
 
@@ -251,7 +243,7 @@ list* list::get_reversed_list() const
     list* reversed_list = new list; 
 
     for(node* run = head_node->next; run != head_node; run = run->next) 
-        reversed_list->insert_end(run->data); 
+        reversed_list->insert_start(run->data); 
 
     return reversed_list; 
 } 
@@ -263,7 +255,7 @@ void list::reverse()
         node* original_first = head_node->next; 
 
         node* run_next = 0; 
-        for(node* run = original_first->next; run != head_node; run = run->next) 
+        for(node* run = original_first->next; run != head_node; run = run_next) 
         {
             run_next = run->next; 
 

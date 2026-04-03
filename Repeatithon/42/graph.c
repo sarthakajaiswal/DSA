@@ -1166,6 +1166,130 @@ status_t destroy_graph(graph_t** pp_g)
     return (SUCCESS); 
 } 
 
+status_t destroy_graph(graph_t** pp_g) 
+{
+    vnode_t* pv_run = NULL; 
+    vnode_t* pv_run_next = NULL; 
+
+    hnode_t* ph_run = NULL; 
+    hnode_t* ph_run_next = NULL; 
+
+    graph_t* g = *pp_g; 
+
+    for(pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run_next) 
+    {
+        pv_run_next = pv_run->v_next; 
+        for(ph_run = pv_run->ph_head_node->h_next; ph_run != pv_run->ph_head_node; ph_run = ph_run_next) 
+        {
+            ph_run_next = ph_run->h_next; 
+            free(ph_run); 
+        } 
+        free(pv_run->ph_head_node); 
+        free(pv_run); 
+    } 
+
+    free(g->pv_head_node); 
+    free(g); 
+
+    *pp_g = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t destroy_graph(graph_t** pp_g) 
+{
+    vnode_t* pv_run = NULL; 
+    vnode_t* pv_run_next = NULL; 
+
+    hnode_t* ph_run = NULL; 
+    hnode_t* ph_run_next = NULL; 
+
+    graph_t* g = *pp_g; 
+
+    for(pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run_next) 
+    {
+        pv_run_next = pv_run->v_next; 
+
+        ph_run = pv_run->ph_head_node->h_next; 
+        while(ph_run != pv_run->ph_head_node) 
+        {
+            ph_run_next = ph_run->h_next; 
+            free(ph_run); 
+            ph_run = ph_run_next; 
+        } 
+        free(pv_run->ph_head_node); 
+        free(pv_run); 
+    } 
+
+    free(g->pv_head_node);  
+    free(g); 
+
+    *pp_g = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t destroy_graph(graph_t** pp_g) 
+{
+    vnode_t* pv_run = NULL; 
+    vnode_t* pv_run_next = NULL; 
+
+    hnode_t* ph_run = NULL; 
+    hnode_t* ph_run_next = NULL; 
+
+    graph_t* g = *pp_g; 
+
+    for (pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run_next) 
+    {
+        pv_run_next = pv_run->v_next; 
+
+        for(ph_run = pv_run->ph_head_node->h_next; ph_run != pv_run->ph_head_node; ph_run = ph_run_next) 
+        {
+            ph_run_next = ph_run->h_next; 
+            free(ph_run); 
+        } 
+        free(pv_run->ph_head_node); 
+        free(pv_run); 
+    } 
+
+    free(g->pv_head_node); 
+    free(g); 
+
+    *pp_g = NULL; 
+
+    return (SUCCESS); 
+} 
+
+status_t destroy_graph(graph_t** pp_g) 
+{
+    vnode_t* pv_run = NULL; 
+    vnode_t* pv_run_next = NULL; 
+
+    hnode_t* ph_run = NULL; 
+    hnode_t* ph_run_next = NULL; 
+
+    graph_t* g = *pp_g; 
+
+    for (pv_run = g->pv_head_node->v_next; pv_run != g->pv_head_node; pv_run = pv_run_next) 
+    {
+        pv_run_next = pv_run->v_next; 
+        for (ph_run = pv_run->ph_head_node->h_next; ph_run != pv_run->ph_head_node; ph_run = ph_run_next) 
+        {
+            ph_run_next = ph_run->h_next; 
+            free(ph_run); 
+        } 
+        free(pv_run->ph_head_node); 
+        free(pv_run); 
+    } 
+
+    free(g->pv_head_node); 
+    free(g);
+     
+    *pp_g = NULL; 
+
+    return (SUCCESS); 
+} 
+
 // --------------------- 
 
 #include <stdio.h> 
@@ -1196,6 +1320,16 @@ int main(void)
         assert(add_edge(g, E[i].v_start, E[i].v_end) == SUCCESS); 
 
     show_graph(g, "Initial state: "); 
+
+    assert(remove_edge(g, 2, 5) == SUCCESS); 
+    assert(remove_edge(g, 2, 3) == SUCCESS); 
+    assert(remove_edge(g, 6, 2) == SUCCESS); 
+    assert(remove_edge(g, 6, 5) == SUCCESS); 
+
+    show_graph(g, "After removing edges (2, 5), (2, 3), (6, 2), (6, 5):"); 
+
+    assert(remove_vertex(g, 3) == SUCCESS); 
+    show_graph(g, "After removing vertex 3:"); 
 
     assert(destroy_graph(&g) == SUCCESS && g == NULL); 
 
@@ -1229,6 +1363,16 @@ int main(void)
 
     show_graph(g, "Initial state: "); 
 
+    assert(remove_edge(g, 2, 3) == SUCCESS); 
+    assert(remove_edge(g, 2, 5) == SUCCESS); 
+    assert(remove_edge(g, 6, 2) == SUCCESS); 
+    assert(remove_edge(g, 6, 5) == SUCCESS); 
+
+    show_graph(g, "After removing edges, (2, 5), (2, 3), (6, 2), (6, 5):"); 
+
+    assert(remove_vertex(g, 3) == SUCCESS); 
+    show_graph(g, "after removing vertex 3:"); 
+
     status_t status = destroy_graph(&g); 
     assert(status == SUCCESS && g == NULL); 
 
@@ -1261,6 +1405,15 @@ int main(void)
         assert(add_edge(g, E[i].v_start, E[i].v_end) == SUCCESS); 
 
     show_graph(g, "Initial state: "); 
+
+    assert(remove_edge(g, 2, 3) == SUCCESS); 
+    assert(remove_edge(g, 2, 5) == SUCCESS); 
+    assert(remove_edge(g, 6, 2) == SUCCESS); 
+    assert(remove_edge(g, 6, 5) == SUCCESS); 
+    show_graph(g, "After removing edges, 92, 3), (2, 5), (6, 2), (6, 5): "); 
+
+    assert(remove_vertex(g, 3) == SUCCESS); 
+    show_graph(g, "After removing vertex 3:"); 
 
     status_t status; 
     status = destroy_graph(&g); 
@@ -1296,6 +1449,15 @@ int main(void)
 
     show_graph(g, "Initial state: "); 
 
+    assert(remove_edge(g, 2, 3) == SUCCESS); 
+    assert(remove_edge(g, 2, 5) == SUCCESS); 
+    assert(remove_edge(g, 6, 2) == SUCCESS); 
+    assert(remove_edge(g, 6, 5) == SUCCESS); 
+    show_graph(g, "after removing edges (2, 3), (2, 5), (6, 2), (6, 5):"); 
+
+    assert(remove_vertex(g, 2, 5) == SUCCESS); 
+    show_graph(g, "after removing vertex: 3:"); 
+
     status_t status = destroy_graph(&g); 
     assert(status == SUCCESS && g == NULL); 
 
@@ -1328,6 +1490,15 @@ int main(void)
         assert(add_edge(g, E[i].v_start, E[i].v_end) == SUCCESS); 
 
     show_graph(g, "Initial state: "); 
+
+    assert(remove_edge(g, 2, 3) == SUCCESS); 
+    assert(remove_edge(g, 2, 5) == SUCCESS); 
+    assert(remove_edge(g, 6, 2) == SUCCESS);
+    assert(remove_edge(g, 6, 5) == SUCCESS); 
+    show_graph(g, "after removing edges (2, 3), (2, 5), (6, 2), (6, 5):"); 
+
+    assert(remove_vertex(g, 3) == SUCCESS); 
+    show_graph(g, "after removing vertex 3: "); 
 
     status_t status = destroy_graph(&g); 
     assert(status == SUCCESS && g == NULL); 
